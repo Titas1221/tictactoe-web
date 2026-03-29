@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .active{
+            background-color: rgb(233, 253, 223);
+        }
+        .plr{
+            border-radius: 7px;
+            height: 40px;
+            width: max-content;
+            margin-bottom: 20px;
+        }
+        #div-main{
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .box{
+            background-color: antiquewhite;
+            align-items: center;
+            padding-top: 30px;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe Game:</h1>
+    <button class="plr active" onclick="selectPlr('plr1')" id="plr1">❌ - Player1</button>
+    <button class="plr" onclick="selectPlr('plr2')" id="plr2">⭕ - Player2</button>
+    <div id="div-main">
+        <div class="box box1" onclick="tapButton('box1')"></div>
+        <div class="box box2" onclick="tapButton('box2')"></div>
+        <div class="box box3" onclick="tapButton('box3')"></div>
+        <div class="box box4" onclick="tapButton('box4')"></div>
+        <div class="box box5" onclick="tapButton('box5')"></div>
+        <div class="box box6" onclick="tapButton('box6')"></div>
+        <div class="box box7" onclick="tapButton('box7')"></div>
+        <div class="box box8" onclick="tapButton('box8')"></div>
+        <div class="box box9" onclick="tapButton('box9')"></div>
+    </div>
+    <button class="plr" id="reset" onclick="resetGame()">RESET GAME!</button>
+    <p id="result"></p>
+
+</body>
+    <script>
+        function selectPlr(player){
+            const activeplr = document.querySelector('.active');
+            if (activeplr) {
+                activeplr.classList.remove('active');
+            }
+
+            let pler = document.getElementById(player);
+            pler.classList.add('active');
+        }
+
+        function tapButton(menu){
+            let clicked = document.querySelector(`.${menu}`)
+            let activeplr = document.querySelector('.active')
+
+            if(activeplr.id == 'plr1'){
+                clicked.innerText = "❌"
+            }
+            else if(activeplr.id == 'plr2'){
+                clicked.innerText = "⭕"
+            }
+        }
+        function resetGame(self){
+            document.querySelectorAll('.box').forEach(box => box.innerText = "")
+            document.getElementById('result').innerText = "GAME RESETTED!!"
+        }
+    </script>
+</html>
